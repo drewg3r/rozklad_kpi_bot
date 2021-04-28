@@ -5,7 +5,7 @@ import time
 
 class RDB:
     def __init__(self):
-        self.conn = sqlite3.connect("users.db", check_same_thread=False)
+        self.conn = sqlite3.connect("database/users.db", check_same_thread=False)
         self.cursor = self.conn.cursor()
 
     def reg_user(self, uid, uname):
