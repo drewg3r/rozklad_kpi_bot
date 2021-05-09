@@ -4,11 +4,15 @@ import time
 
 
 class RDB:
+    """This is an database controller class."""
     def __init__(self):
+        """Class constructor. Setups connection with sqlite database."""
         self.conn = sqlite3.connect("database/users.db", check_same_thread=False)
         self.cursor = self.conn.cursor()
 
     def reg_user(self, uid, uname):
+        """Creates new user of flushes user's data if this user is already
+        registred."""
         cuser = self.get_user(uid)
         time.sleep(0.1)
         if cuser != None:

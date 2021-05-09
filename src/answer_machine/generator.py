@@ -3,17 +3,31 @@ import json
 
 
 class AnswerGenerator:
-
+    """AnswerGenerator class. It is used to provide a reply for user's input.
+    Also AnswerGenerator interacts with db:
+      - adds user information;
+      - removes users;
+      - checks whether user is registred or not;
+      - gets user's schedule using API endpoint from db.
+    """
     rdb = None
+    """This is a db controller class instance"""
     answers_template = None
+    """This is the path to .json file, which contains all bot's replies."""
+
 
     def __init__(self, rdb, answers_template):
+        """AnswerGenerator's class constructor. Takes 2 arguments: rdb instance
+        and .json replies file path."""
         self.rdb = rdb
         with open(answers_template) as f:
             self.answers_template = json.load(f)
 
-    # Adds new user
+
     def cmd_start(self, message):
+        """This method is executed by bot.py when user sends /start message.
+        It creates a new user in db(or erases user's information if user 
+        already exists) and asks user to choose his role."""
         self.rdb.reg_user(message.chat.id, message.chat.first_name)
 
         markup = telebot.types.ReplyKeyboardMarkup()
@@ -28,11 +42,15 @@ class AnswerGenerator:
 
 
     def cmd_help(self, message):
+        """This method is executed by bot.py when user sends /help message.
+        Just returns help message from answers_template."""
         markup = telebot.types.ReplyKeyboardRemove(selective=False)
         return self.answers_template["/help"], markup
 
 
     def cmd_rozklad(self, message):
+        """This method is executed by bot.py when user sends /rozklad message.
+        Checks if user is registred and then sends user's schedule."""
         markup = telebot.types.ReplyKeyboardRemove(selective=False)
         user = self.rdb.get_user(message.chat.id)
         message = ""
@@ -63,6 +81,7 @@ class AnswerGenerator:
 
 
     def message(self, message):
+        """Handles any other user's message. Used for registration."""
         markup = telebot.types.ReplyKeyboardRemove(selective=False)
         user = self.rdb.get_user(message.chat.id)
         if user[3] == "":
@@ -102,7 +121,3 @@ class AnswerGenerator:
                     self.rdb.set_name(message.chat.id, name[0])
                     return self.answers_template["reg_done"], markup
 
-
-
-# ag = AnswerGenerator(None, "templates/ru.json")
-# print(ag.cmd_start(None))
