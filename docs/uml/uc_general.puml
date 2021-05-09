@@ -1,0 +1,17 @@
+@startuml
+usecase UC_01 as "<b>UC_01</b>\nРеєстрація"
+usecase UC_02 as "<b>UC_02</b>\nОтримати розклад\n(викладач)"
+usecase UC_03 as "<b>UC_03</b>\nОтримати розклад\n(студент)"
+
+
+actor :Користувач: as user
+actor :Студент: as student
+actor :Викладач: as teacher
+
+user -r-> UC_01
+student -d-> UC_03
+teacher -u-> UC_02
+
+student -u-|> user
+teacher -d-|> user
+@enduml
