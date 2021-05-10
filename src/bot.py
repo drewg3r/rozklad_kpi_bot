@@ -25,7 +25,7 @@ import answer_machine.generator as answer_generator
 db = rdb.RDB()
 """Selecting file containing all bot's answers."""
 
-ag = answer_generator.AnswerGenerator(db, "answer_machine/templates/ru.json")
+ag = answer_generator.AnswerGenerator(db, "answer_machine/templates/ua.json")
 """Setting up the `AnswerGenerator`. Specifying file with bot's answers."""
 
 bot = telebot.TeleBot(os.environ.get('ROZKLAD_BOT_KEY'))
@@ -67,4 +67,4 @@ def handle_text(message):
     bot.send_message(message.chat.id, reply[0], reply_markup=reply[1]) # Send message back to user
 
 
-# bot.infinity_polling(True)
+bot.infinity_polling(True)

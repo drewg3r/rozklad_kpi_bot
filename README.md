@@ -26,4 +26,5 @@ python3 ./bot.py
 ## Документація
 
 Документація до коду: https://drewg3r.github.io/rozklad_kpi_bot/
+
 Пояснювальна записка: https://github.com/drewg3r/rozklad_kpi_bot/blob/master/docs/README.md
