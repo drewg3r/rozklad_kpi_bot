@@ -44,7 +44,7 @@
 
 ### Діаграма юзкейсів
 
-![use-cases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/buisness-use-cases.puml)
+![use-cases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/rozklad_kpi_bot/master/docs/uml/uc_general.puml)
 
 ### Категорії користувачів
 
@@ -156,7 +156,7 @@
 
 ### Структура БД
 
-КАРТИНКА
+![database](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/rozklad_kpi_bot/master/docs/uml/er.puml)
 
 База даних зберігає в собі інформацію про користувачів: їх налаштування щодо розкладу. Таблиці `teachers` та `groups` зберігають посилання на розклад для конкретних груп та викладачів.
 
@@ -170,6 +170,8 @@
 ### Інтерфейс користувача
 
 Інтерфейс користувача текстовий, як і в усіх ботах. Проте, було реалізовано метод, що відображає кнопки вибору(студент чи викладач) при реєстрації.
+
+![interface](docs/uml/screenshot.png)
 
 ### Документація
 
