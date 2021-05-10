@@ -1,10 +1,10 @@
 import sqlite3
-import datetime
 import time
 
 
 class RDB:
     """This is an database controller class."""
+
     def __init__(self):
         """Class constructor. Setups connection with sqlite database."""
         self.conn = sqlite3.connect("database/users.db", check_same_thread=False)

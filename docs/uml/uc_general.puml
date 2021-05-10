@@ -2,7 +2,9 @@
 usecase UC_01 as "<b>UC_01</b>\nРеєстрація"
 usecase UC_02 as "<b>UC_02</b>\nОтримати розклад\n(викладач)"
 usecase UC_03 as "<b>UC_03</b>\nОтримати розклад\n(студент)"
-
+usecase UC_04 as "<b>UC_04</b>\nЗапропонувати викладачу\nпровести додаткову пару"
+usecase UC_05 as "<b>UC_05</b>\nПідтримати запит на додаткову пару"
+usecase UC_06 as "<b>UC_06</b>\nПрийняти запит на додаткову пару"
 
 actor :Користувач: as user
 actor :Студент: as student
@@ -10,7 +12,11 @@ actor :Викладач: as teacher
 
 user -r-> UC_01
 student -d-> UC_03
+student -d-> UC_04
+student -d-> UC_05
+
 teacher -u-> UC_02
+teacher -u-> UC_06
 
 student -u-|> user
 teacher -d-|> user

@@ -19,8 +19,6 @@ python3 ./bot.py
 import telebot
 import os
 import database.rdb as rdb
-import time
-import datetime
 import answer_machine.generator as answer_generator
 
 
